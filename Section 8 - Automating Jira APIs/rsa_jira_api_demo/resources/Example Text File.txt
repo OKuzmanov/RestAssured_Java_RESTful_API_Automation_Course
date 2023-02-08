@@ -1,0 +1,1 @@
+This is an example test file. To try out the add attachment rest api endpoint.

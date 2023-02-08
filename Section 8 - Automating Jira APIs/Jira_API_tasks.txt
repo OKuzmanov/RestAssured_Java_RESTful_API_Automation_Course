@@ -1,0 +1,14 @@
+JIRA API:
+-project key: RTJA
+-Add Issue
+-Get Issue
+-Update Issue
+-Delete Issue
+-Add Comment
+-Get Comment
+-Update Comment
+-Delete Comment
+- Add Attachment (using mulipart() method, and headers("content-type", "multipart/form-data"))
+- Get Issue with given fields (limiting Json response with query parameters)
+- Parse the complex Jira Json response to retrieve the added Comment
+*Use SessionFilter for Authentication*

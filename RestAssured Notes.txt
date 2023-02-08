@@ -1,0 +1,12 @@
+RestAssured Notes:
+
+1. REST Api Basics
+2. Testing using Postman
+3. RestAssured test automation
+4. Cookie-based Authentication
+5. Authentication using SessionFilter object in RestAssured
+6. Parsing and validating complex Json responses
+7. OAuth 2.0 Authentication introduction
+8. Json Serialization/Deserialization with POJO classes
+9. SpecBuilders (Request/ Response)
+10. relaxedHTTPSValidation() - to bypass all SSL sertification issues
