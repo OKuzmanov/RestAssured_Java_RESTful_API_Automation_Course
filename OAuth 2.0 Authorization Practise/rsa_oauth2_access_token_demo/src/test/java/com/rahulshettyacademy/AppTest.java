@@ -41,22 +41,6 @@ public class AppTest {
     @BeforeTest
     public void initializeAccessToken() {
 
-        //Deprecated from Google
-//        WebDriverManager.chromedriver().setup();
-//        WebDriver driver = new ChromeDriver();
-//
-//        driver.get(authUrl);
-//
-//        driver.findElement(By.cssSelector("input#identifierId")).sendKeys(userEmail);
-//        driver.findElement(By.cssSelector("button.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ")).click();
-//
-//        driver.findElement(By.cssSelector("input[type='password']]")).sendKeys(pass);
-//        driver.findElement(By.cssSelector("button.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ")).click();
-//
-//        String currentUrl = driver.getCurrentUrl();
-//
-//        authCode = Util.extractAccessToken(currentUrl);
-
         authCode = Util.extractAccessToken("https://rahulshettyacademy.com/getCourse.php?code=4%2F0AWtgzh7hHeRkjtm8_SJPwbDcHJpTcyciREgcY97VrolZgvpvVKGoU4nYOhSodVQ6c7x29g&scope=email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=none");
 
         JsonPath jspPostAccessToken = given().log().all()
@@ -108,22 +92,5 @@ public class AppTest {
 
         int mobileCourses = jspAccessToken.getInt("courses.mobile.size()");
         Assert.assertEquals(mobileCourses, 1);
-
-        //.body() assertions throw errors
-//        given().log().all()
-//                .queryParam("access_token", accessToken)
-//                .expect().defaultParser(Parser.JSON)
-//                .when().get(BASE_URL + GET_COURSES_RESOURCE)
-//                .then().log().all()
-//                .assertThat().statusCode(200)
-//                .body("instructor", equalTo("RahulShetty"))
-//                .body("url", equalTo("rahulshettycademy"))
-//                .body("services", equalTo("projectSupport"))
-//                .body("expertise", equalTo("Automation"))
-//                .body("courses.size()", equalTo(3))
-//                .body("courses.webAutomation.size()", equalTo(3))
-//                .body("courses.api.size()", equalTo(2))
-//                .body("courses.mobile.size()", equalTo(1))
-//                .body("linkedIn", equalTo("https://www.linkedin.com/in/rahul-shetty-trainer/"));
     }
 }
