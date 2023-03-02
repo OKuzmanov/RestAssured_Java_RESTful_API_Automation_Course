@@ -1,0 +1,496 @@
+{
+	"info": {
+		"_postman_id": "3d607aa6-eebb-4d16-8e38-786e78546d5c",
+		"name": "RSA GraphQl Queries",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15176059"
+	},
+	"item": [
+		{
+			"name": "Get All Locations",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\r\n  locations(filters: {}){\r\n    info{\r\n      count\r\n      pages\r\n      next\r\n      prev\r\n    }\r\n    result {\r\n      id\r\n      name\r\n      type\r\n      residents {\r\n        name\r\n        type\r\n        status\r\n        species\r\n        gender\r\n      }\r\n    }\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Location",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query($locationId: Int!) {\r\n  location(locationId: $locationId){\r\n    name\r\n    type\r\n    id\r\n    dimension\r\n    residents{\r\n      name\r\n    }\r\n    created\r\n  }\r\n}",
+						"variables": "{\r\n    \"locationId\": 4\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Episode",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation($episodeName: String!, $airDate: String!, $episode: String!) {\r\n  createEpisode(episode: {name: $episodeName, air_date: $airDate, episode: $episode}) {\r\n    id\r\n  }\r\n}",
+						"variables": "{\r\n    \"episodeName\": \"Batman Returns\",\r\n    \"airDate\": \"1992_10_11\",\r\n    \"episode\": \"Btv\"\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Locations By Ids",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query($ids: [Int!]!) {\r\n  locationsByIds(ids: $ids) {\r\n    name\r\n    type\r\n    dimension\r\n    residents{\r\n      id\t\r\n      name\r\n      type\r\n    }\r\n  }\r\n}",
+						"variables": "{\r\n  \"ids\": [1, 2, 3]\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Character By Id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query($id: Int!) {\r\n  character(characterId: $id) {\r\n    name\r\n    type\r\n    status\r\n    species\r\n    gender\r\n    image\r\n    location{\r\n      id\r\n      name\r\n    }\r\n    episodes{\r\n      id\r\n      name\r\n    }\r\n  }\r\n}",
+						"variables": "{\r\n  \"id\": 888\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Characters",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\r\n  characters(filters: {}) {\r\n    info{\r\n      count\r\n    }\r\n    result{\r\n      id\r\n      name\r\n      type\r\n    }\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Characters By Ids",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query($ids: [Int!]!) {\r\n  charactersByIds(ids: $ids){\r\n    name\r\n    type\r\n    gender\r\n    status\r\n    species\r\n  }\r\n}",
+						"variables": "{\r\n  \"ids\": [1, 2, 3]\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Episode By Id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query($id: Int!) {\r\n  episode(episodeId: $id){\r\n    name\r\n    air_date\r\n    episode\r\n    characters{\r\n      id\r\n      name\r\n      type\r\n      gender\r\n      species\r\n    }\r\n  }\r\n}",
+						"variables": "{\r\n  \"id\": 1\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Episodes By Ids",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query($ids: [Int!]!) {\r\n  episodesByIds(ids: $ids) {\r\n    name\r\n    air_date\r\n    episode\r\n    characters{\r\n      id\r\n      name\r\n      type\r\n      gender\r\n      species\r\n    }\r\n  }\r\n}",
+						"variables": "{\r\n  \"ids\": [1, 2, 3]\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Episodes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\r\n  episodes(filters: {}){\r\n    info{\r\n      count\r\n    }\r\n    result{\r\n      id\r\n      name\r\n      air_date\r\n      episode\r\n      characters{\r\n        id\r\n        name\r\n        type\r\n        gender\r\n        species\r\n      }\r\n    }\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Location",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation($name: String!, $type: String!, $dimension: String!) {\r\n  createLocation(location: {name: $name, type: $type, dimension: $dimension}){\r\n    id\r\n  }\r\n}",
+						"variables": "{\r\n  \"name\": \"SoftUni\",\r\n  \"type\": \"Educational Institution\",\r\n  \"dimension\": \"0123\"\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Locations",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation($locationIds: [Int!]) {\r\n  deleteLocations(locationIds: $locationIds) {\r\n    locationsDeleted\r\n  }\r\n}",
+						"variables": "{\r\n  \"locationIds\": [1687]\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Location",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation($id: Int!, $name: String, $type: String, $dimension: String) {\r\n  editLocation(locationId: $id, newLocationData: {name: $name, type: $type, dimension: $dimension}) {\r\n    status\r\n  }\r\n}",
+						"variables": "{\r\n  \"id\": 5,\r\n  \"name\": \"newName\",\r\n  \"type\": \"newType\",\r\n  \"dimension\": \"0123\"\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Character",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation($name: String!, $type: String!, $status: String!, $species: String!, $gender: String!, $image: String!, $originId: Int!, $locationId: Int!) {\r\n  createCharacter(character: {name: $name, type: $type, status: $status, species: $species, gender: $gender, image: $image, originId: $originId, locationId: $locationId}) {\r\n    id\r\n  }\r\n}",
+						"variables": "{\r\n  \"name\": \"newName\",\r\n  \"type\": \"newType\",\r\n  \"status\": \"0123\",\r\n  \"species\": \"aaaaa\",\r\n  \"gender\": \"male\",\r\n  \"image\": \"asdas\",\r\n  \"originId\": 1635,\r\n  \"locationId\": 1635\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Characters",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation($ids: [Int!]) {\r\n  deleteCharacters(characterIds: $ids){\r\n    charactersDeleted\r\n  }\r\n}",
+						"variables": "{\r\n  \"ids\": [1, 2, 3]\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Associate Character With Episode",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation($episodeId:Int!, $characterId: Int!) {\r\n  associateEpisodeCharacter(episodeId: $episodeId, characterId: $characterId) {\r\n    status\r\n  }\r\n}",
+						"variables": "{\r\n  \"episodeId\": 11,\r\n  \"characterId\": 1268\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Episode",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation($name: String!, $air_date: String!, $episode: String!) {\r\n  createEpisode(episode: {name: $name, air_date: $air_date, episode: $episode}){\r\n    id\r\n  }\r\n}",
+						"variables": "{\r\n  \"name\": \"Ben And Frank\",\r\n  \"air_date\": \"10.10.1999\",\r\n  \"episode\": \"Netflix\"\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Episodes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation($ids: [Int!]) {\r\n  deleteEpisodes(episodeIds: $ids){\r\n    episodesDeleted\r\n  }\r\n}",
+						"variables": "{\r\n  \"ids\": [1, 2, 3]\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/gq/graphql",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"gq",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
